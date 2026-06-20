@@ -26,6 +26,9 @@ speaker_note: |
   Bienvenidos. Hoy presentamos la arquitectura en capas distribuidas para el Sistema de Tareas.
   La agenda cubre el ADR con la decisión justificada, los diagramas C4 de contenedores y componentes, la explicación detallada de cada capa y un flujo de ejemplo que las conecta todas.
   Vamos paso a paso, empezando por el contexto del sistema.
+  ---
+  ADR: Architecture Decision Record — documento que registra una decisión arquitectónica, su contexto, alternativas y consecuencias.
+  C4: Context, Containers, Components, Code — modelo de 4 niveles de diagramas para describir arquitectura de software.
 -->
 
 <!-- end_slide -->
@@ -72,6 +75,9 @@ speaker_note: |
   El tier de aplicación contiene la lógica de negocio en Spring Boot, en una subred protegida.
   El tier de infraestructura aísla PostgreSQL y los servicios de notificación externos.
   La comunicación entre tiers usa REST con HTTP/JSON, y a nivel interno seguimos DIP: todas las dependencias apuntan hacia el dominio, nunca al revés.
+  ---
+  SPA: Single Page Application — aplicación web que carga una sola página HTML y actualiza dinámicamente el contenido sin recargar el navegador.
+  DIP: Dependency Inversion Principle — principio SOLID: los módulos de alto nivel no deben depender de los de bajo nivel; ambos deben depender de abstracciones.
 -->
 
 <!-- end_slide -->
@@ -110,6 +116,8 @@ speaker_note: |
   Evaluamos dos alternativas antes de decidirnos por capas distribuidas.
   El monolito en capas ofrecía simplicidad y transacciones directas, pero un único despliegue impedía escalar el frontend independientemente y no permitía el aislamiento de seguridad por zonas de red que requería la organización.
   Los microservicios daban escalado granular y equipos autónomos, pero para un equipo mediano con un dominio de tareas acotado, la complejidad operativa de orquestar contenedores, manejar consistencia distribuida y configurar observabilidad era sobre-ingeniería.
+  ---
+  DMZ: Demilitarized Zone — segmento de red que aísla los servidores expuestos a internet de la red interna protegida.
 -->
 
 <!-- end_slide -->
@@ -136,6 +144,8 @@ speaker_note: |
   Del lado positivo: podemos escalar el frontend horizontalmente sin tocar el backend, tenemos aislamiento de seguridad por zonas de red, cada equipo mantiene su tier sin interferencias y las responsabilidades están claramente separadas.
   Del lado negativo: cada salto de red introduce latencia, los fallos parciales requieren manejo de errores en cada capa, y ahora tenemos tres superficies para monitorear y desplegar.
   El trade-off se acepta porque la ganancia en escalabilidad, seguridad y organización supera estos costos para nuestro contexto.
+  ---
+  DMZ: Demilitarized Zone — segmento de red que aísla los servidores expuestos a internet de la red interna protegida.
 -->
 
 <!-- end_slide -->
@@ -174,6 +184,9 @@ speaker_note: |
   El usuario accede por HTTPS a través de un balanceador Nginx. El frontend es una SPA en React que consume la API REST del backend.
   El backend en Spring Boot orquesta la lógica de negocio y se comunica con PostgreSQL para persistencia y con servicios externos de notificación como SendGrid y Twilio.
   Noten la separación física: el frontend está expuesto, el backend en subred protegida, y la base de datos en la subred más restringida.
+  ---
+  C4: Context, Containers, Components, Code — modelo de 4 niveles de diagramas para describir arquitectura de software.
+  SPA: Single Page Application — aplicación web que carga una sola página HTML y actualiza dinámicamente el contenido sin recargar el navegador.
 -->
 
 <!-- end_slide -->
@@ -245,6 +258,10 @@ speaker_note: |
   El Dominio contiene la entidad Tarea con sus patrones State y Strategy, y define los contratos TareaRepository y NotificacionGateway.
   La Infraestructura implementa esos contratos: SqlTareaRepository con JPA, EmailAdapter con SendGrid, SMSAdapter con Twilio, y AuditoriaService escuchando eventos.
   Las líneas punteadas muestran DIP: la infraestructura implementa interfaces definidas por el dominio.
+  ---
+  DTO: Data Transfer Object — objeto plano sin lógica que transporta datos entre capas o a través de la red.
+  JPA: Jakarta/Java Persistence API — especificación de Java para mapear objetos a bases de datos relacionales, implementada por Hibernate.
+  DIP: Dependency Inversion Principle — principio SOLID: los módulos de alto nivel no deben depender de los de bajo nivel; ambos deben depender de abstracciones.
 -->
 
 <!-- end_slide -->
@@ -258,16 +275,14 @@ flowchart LR
     I[Infraestructura] -.->|"Implementa"| D
 ```
 
-> Las dependencias siempre apuntan hacia el Dominio.
-> La Infraestructura implementa contratos definidos por el Dominio.
-> El Dominio no conoce frameworks, ORMs ni proveedores externos.
-
 <!--
 speaker_note: |
   Este diagrama resume la dirección de dependencias según el principio DIP.
   Presentación depende de Aplicación, Aplicación depende de Dominio. El Dominio no depende de nadie.
   Infraestructura implementa contratos definidos por el Dominio, invirtiendo la dependencia tradicional.
   Esto significa que el Dominio —el núcleo del sistema— no sabe nada de Spring, Hibernate, SendGrid ni Twilio. Es completamente portable.
+  ---
+  DIP: Dependency Inversion Principle — principio SOLID: los módulos de alto nivel no deben depender de los de bajo nivel; ambos deben depender de abstracciones.
 -->
 
 <!-- end_slide -->
@@ -296,6 +311,8 @@ speaker_note: |
   El TareaController expone los endpoints REST y recibe DTOs de entrada. Valida el formato pero no decide nada de negocio.
   Usa el patrón Front Controller de Spring y DTOs para el transporte de datos.
   Es importante entender lo que NO hace: nunca contiene lógica de negocio, nunca accede directamente a la base de datos y nunca decide si una tarea puede cambiar de estado. Todo eso lo delega hacia abajo.
+  ---
+  DTO: Data Transfer Object — objeto plano sin lógica que transporta datos entre capas o a través de la red.
 -->
 
 <!-- end_slide -->
@@ -380,6 +397,9 @@ speaker_note: |
   Strategy para SLA: la prioridad se calcula dinámicamente según el tiempo restante; si faltan menos de 2 horas, la tarea sube a crítica.
   Domain Events permiten que la auditoría y las notificaciones reaccionen sin acoplar el dominio.
   Y lo más importante: los contratos TareaRepository y NotificacionGateway se definen aquí, en el dominio. La infraestructura los implementa, nunca al revés.
+  ---
+  DDD: Domain-Driven Design — enfoque de diseño donde el dominio de negocio es el centro del software y dicta la estructura del código.
+  SLA: Service Level Agreement — acuerdo que define métricas de servicio como tiempo de respuesta, disponibilidad y prioridad.
 -->
 
 <!-- end_slide -->
@@ -414,6 +434,9 @@ speaker_note: |
   EmailAdapter y SMSAdapter implementan NotificacionGateway, cada uno traduciendo la interfaz del dominio a la API propietaria de su proveedor. Esto permite cambiar de SendGrid a otro proveedor sin tocar el dominio.
   AuditoriaService escucha los eventos de dominio y registra cada cambio con marca de tiempo, usuario y detalle, sin bloquear el flujo principal.
   Los patrones aquí son puramente técnicos: Repository, Data Mapper, Adapter y Event Listener.
+  ---
+  JPA: Jakarta/Java Persistence API — especificación de Java para mapear objetos a bases de datos relacionales, implementada por Hibernate.
+  ORM: Object-Relational Mapping — técnica que convierte datos entre sistemas de tipos incompatibles usando POO.
 -->
 
 <!-- end_slide -->
@@ -447,6 +470,8 @@ speaker_note: |
   La aplicación persiste el cambio y dispara la notificación.
   La infraestructura ejecuta el UPDATE en PostgreSQL, envía el correo por SendGrid, y de forma asíncrona el AuditoriaService registra la trazabilidad al recibir el evento.
   Todo esto ocurre sin que el dominio sepa nada de HTTP, SQL, SMTP ni frameworks.
+  ---
+  DTO: Data Transfer Object — objeto plano sin lógica que transporta datos entre capas o a través de la red.
 -->
 
 <!-- end_slide -->
@@ -478,4 +503,8 @@ speaker_note: |
   Presentación traduce protocolos, Aplicación coordina casos de uso, Dominio contiene las reglas de negocio, Infraestructura implementa los detalles técnicos.
   Cada capa tiene sus patrones específicos y responsabilidades claras.
   Y la regla de oro: las dependencias siempre apuntan hacia el Dominio. El Dominio es el centro inmutable del sistema. Todo lo demás es un detalle que puede cambiar.
+  ---
+  DTO: Data Transfer Object — objeto plano sin lógica que transporta datos entre capas o a través de la red.
+  DIP: Dependency Inversion Principle — principio SOLID: los módulos de alto nivel no deben depender de los de bajo nivel; ambos deben depender de abstracciones.
+  ORM: Object-Relational Mapping — técnica que convierte datos entre sistemas de tipos incompatibles usando POO.
 -->
