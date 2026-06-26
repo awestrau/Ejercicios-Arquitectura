@@ -220,16 +220,18 @@ speaker_note: |
 # Sección 1: Arquitectura de Spotify
 ## Componentes de la Solución
 
+<!-- new_lines: 4 -->
 ```mermaid +render
-graph TD
-    A[Spotify] --> B[Catálogo Musical]
-    A --> C[Motor de Recomendaciones]
-    A --> D[Streaming de Audio]
-    A --> E[Publicidad]
-    A --> F[Social y Playlists]
-    A --> G[Autenticación y Usuarios]
-    A --> H[Plataforma de Datos]
-    A --> I[Content Platform]
+mindmap
+  root((Spotify))
+    Catálogo Musical
+    Motor de Recomendaciones
+    Streaming de Audio
+    Publicidad
+    Social y Playlists
+    Autenticación y Usuarios
+    Plataforma de Datos
+    Content Platform
 ```
 
 <!--
