@@ -196,41 +196,71 @@ En conclusión, el éxito de Spotify se sustenta en una arquitectura de microser
 **Términos clave:**
 - **Ley de Conway**: Principio que establece que las organizaciones diseñan sistemas que reflejan su estructura de comunicación. En Spotify: squads autónomos → microservicios independientes.
 
-## Slide 28: Perfiles Analizados
-Pasamos a la segunda sección, donde investigamos el estado actual del rol del arquitecto de software. Analizamos tres perfiles reales: un Staff Software Architect en Spotify, un Cloud Software Architect en Globant y un Arquitecto de Software Senior en Mercado Libre. Las fuentes fueron LinkedIn Recruiter, Glassdoor y Get on Board, consultadas en 2026.
+## Slide 28: Tabla Comparativa de Perfiles (1/3)
+Pasamos a la segunda sección, donde investigamos el estado actual del rol del arquitecto de software mediante perfiles reales del mercado laboral.
 
-## Slide 29: Coincidencias Clave
+Spotify — Staff Software Architect (Suecia, Híbrido): Define la visión técnica a largo plazo de los sistemas de distribución de contenido, guía equipos multidisciplinares en decisiones arquitectónicas y mitiga riesgos técnicos en plataformas de alta disponibilidad.
+
+Globant — Software Architect Cloud Solutions (EE.UU., Remoto): Diseña y migra arquitecturas empresariales hacia entornos multi-nube, asegura gobernanza de datos y costos de infraestructura (FinOps), y evalúa y audita la seguridad de soluciones integradas.
+
+Mercado Libre — Arquitecto de Software Senior (Argentina, Híbrido): Diseña arquitecturas orientadas a microservicios tolerantes a fallos, optimiza bases de datos distribuidas y flujos de mensajería masiva, y mentoriza ingenieros senior definiendo estándares de calidad de código.
+
+Fuentes: LinkedIn, Glassdoor, Get on Board (2026).
+
+## Slide 29: Tabla Comparativa de Perfiles (2/3)
+**Habilidades Técnicas:**
+- Spotify: Diseño de sistemas distribuidos a gran escala (hiperescala), modelado de microservicios y arquitecturas de eventos, gestión de resiliencia y tolerancia a fallos.
+- Globant: Arquitectura cloud nativa (IaaS, PaaS, SaaS), automatización de infraestructura como código (IaC), estrategias de seguridad perimetral y gobierno de datos.
+- Mercado Libre: Patrones de diseño de software, optimización de consultas distribuidas, estrategias de caché e ingesta de datos en tiempo real, pruebas de carga y análisis de rendimiento.
+
+**Habilidades Blandas:**
+- Spotify: Liderazgo de influencia sin autoridad formal, comunicación estratégica y negociación con directivos, gestión y resolución de conflictos técnicos.
+- Globant: Comunicación técnica clara a audiencias no técnicas, adaptabilidad a entornos cambiantes y prioridades de clientes, pensamiento analítico orientado a objetivos de negocio.
+- Mercado Libre: Mentoría, empatía y desarrollo de talento técnico, trabajo en equipo colaborativo bajo metodologías ágiles, proactividad y toma de decisiones bajo presión.
+
+**Términos clave:**
+- **IaC (Infrastructure as Code)**: Práctica de gestionar y aprovisionar infraestructura mediante archivos de configuración versionables.
+
+## Slide 30: Tabla Comparativa de Perfiles (3/3)
+**Tecnologías mencionadas:**
+- Spotify: Java, C++, Python, GCP, Kubernetes, Docker, Kafka, gRPC. Stack orientado a hiperescala sobre Google Cloud.
+- Globant: AWS, Azure, Terraform, Jenkins, Docker, SQL Server, PostgreSQL, Redis. Stack multi-cloud con foco en automatización.
+- Mercado Libre: Go, Java, Python, AWS, Elasticsearch, Redis, MySQL, Apache Kafka. Stack regional sobre AWS con énfasis en datos y mensajería.
+
+Brecha salarial: Norteamérica/Europa ($120K-$185K) vs Latinoamérica ($60K-$75K). Las exigencias técnicas conceptuales son muy similares, pero las compensaciones están ligadas a la ubicación geográfica y el costo de vida local de la empresa contratante.
+
+## Slide 31: Coincidencias Clave
 Las tres coincidencias principales son: dominio obligatorio de cloud y contenedores en todas las geografías; experiencia en Kafka y bases distribuidas como requisito transversal; y la importancia extrema de las habilidades blandas. A diferencia de roles puramente técnicos, el arquitecto pasa gran parte de su tiempo comunicando, negociando e influenciando.
 
-## Slide 30: Diferencias Significativas
+## Slide 32: Diferencias Significativas
 Las principales diferencias están en el contexto: Spotify se enfoca en hiperescala y resiliencia, mientras Globant tiene un matiz de consultoría y gobernanza de costos. La brecha salarial es marcada: entre 120 y 185 mil dólares en Norteamérica y Europa frente a 60-75 mil en Latinoamérica, pese a que las exigencias técnicas son muy similares.
 
 **Términos clave:**
 - **FinOps (Financial Operations)**: Práctica que une finanzas, tecnología y negocio para gestionar y optimizar costos en la nube. El arquitecto debe entender el impacto económico de sus decisiones técnicas.
 
-## Slide 31: Conclusión
+## Slide 33: Conclusión
 El arquitecto de software ha evolucionado más allá del diseño técnico hacia una posición estratégica. Las empresas buscan profesionales con conocimientos en microservicios, cloud, DevOps y ciberseguridad, pero las habilidades blandas son igualmente valoradas. El arquitecto funciona como puente entre los objetivos del negocio y la implementación tecnológica.
 
 **Términos clave:**
 - **DevOps**: Cultura y práctica que integra desarrollo (Dev) y operaciones (Ops) para acortar ciclos de entrega. El arquitecto debe diseñar sistemas que faciliten CI/CD, monitoreo y operación autónoma.
 
-## Slide 32: Transformación del Rol
+## Slide 34: Transformación del Rol
 En la tercera sección proyectamos la evolución del rol del arquitecto en la próxima década. Durante los próximos diez años, el arquitecto evolucionará de ser principalmente un diseñador técnico a convertirse en un estratega tecnológico. Deberá comprender no solo la infraestructura, sino también el impacto ético, económico, ambiental y social de sus decisiones.
 
-## Slide 33: Impacto de la IA
+## Slide 35: Impacto de la IA
 La IA transformará directamente las actividades del arquitecto. Podrá analizar grandes cantidades de información, detectar deuda técnica, generar documentación y sugerir mejoras. Sin embargo, la IA generativa todavía enfrenta problemas de precisión, alucinaciones y falta de marcos sólidos de evaluación. La IA debe verse como herramienta de apoyo, no como reemplazo del arquitecto. Fuente: Esposito et al., 2025; Software Engineering Institute, 2024.
 
 **Términos clave:**
 - **Alucinación (en IA)**: Fenómeno donde un modelo de IA generativa produce información incorrecta o inventada presentada como factual. Riesgo crítico al usar IA para decisiones arquitectónicas.
 
-## Slide 34: Impacto de la Computación Cuántica
+## Slide 36: Impacto de la Computación Cuántica
 La computación cuántica podría influir en optimización y simulación en la próxima década. IBM proyecta una computadora cuántica tolerante a fallos hacia 2029. El impacto más inmediato estará en seguridad: el arquitecto deberá planificar migraciones hacia algoritmos resistentes a ataques cuánticos. El NIST ya publicó estándares de criptografía post-cuántica en 2024.
 
 **Términos clave:**
 - **Criptografía post-cuántica**: Algoritmos criptográficos diseñados para resistir ataques de computadoras cuánticas. Estandarizados por el NIST en 2024. Reemplazarán a RSA y ECC en el futuro.
 - **NIST (National Institute of Standards and Technology)**: Agencia del gobierno de EE.UU. que desarrolla estándares tecnológicos. Publicó los primeros estándares de criptografía post-cuántica en 2024.
 
-## Slide 35: Nuevas Responsabilidades
+## Slide 37: Nuevas Responsabilidades
 El arquitecto del futuro tendrá responsabilidades más amplias: gobernanza de sistemas de IA bajo ISO 42001, sostenibilidad medida con la especificación SCI de la Green Software Foundation, ética tecnológica y cumplimiento normativo. Ya no bastará con que el sistema funcione; deberá ser auditable, confiable y alineado con principios de privacidad y transparencia.
 
 **Términos clave:**
@@ -238,39 +268,39 @@ El arquitecto del futuro tendrá responsabilidades más amplias: gobernanza de s
 - **SCI (Software Carbon Intensity)**: Especificación de la Green Software Foundation que mide la tasa de emisiones de carbono de un sistema de software. Permite tomar decisiones de diseño más sostenibles.
 - **Green Software Foundation**: Organización sin fines de lucro que desarrolla estándares y herramientas para reducir el impacto ambiental del software.
 
-## Slide 36: Habilidades a Desarrollar
+## Slide 38: Habilidades a Desarrollar
 El arquitecto necesitará una combinación de habilidades técnicas y humanas. En lo técnico: cloud, MLOps, gobernanza de datos, IA generativa y fundamentos de criptografía post-cuántica. En lo humano: pensamiento crítico, liderazgo, negociación y capacidad para analizar trade-offs entre rendimiento, costo, privacidad y sostenibilidad.
 
 **Términos clave:**
 - **MLOps (Machine Learning Operations)**: Conjunto de prácticas que aplican principios DevOps al ciclo de vida de modelos ML: integración continua, entrega continua y monitoreo continuo de modelos en producción.
 - **Trade-off (compensación)**: Sacrificio aceptado en un aspecto para ganar en otro. En arquitectura: rendimiento vs. costo, personalización vs. privacidad, velocidad vs. estabilidad. No hay decisiones perfectas.
 
-## Slide 37: Automatización vs. Criterio Humano
+## Slide 39: Automatización vs. Criterio Humano
 Varias actividades podrán automatizarse: documentación, diagramas, análisis de dependencias, detección de deuda técnica. Pero el criterio humano seguirá siendo indispensable para prioridades estratégicas, resolver conflictos, evaluar consecuencias éticas y decidir sobre seguridad y migraciones complejas. El arquitecto actuará como mediador entre la automatización y la responsabilidad.
 
 **Términos clave:**
 - **Deuda técnica**: Costo implícito de retrabajo causado por elegir soluciones rápidas o subóptimas en lugar de enfoques de mayor calidad. La IA puede acelerar su acumulación si no se revisa.
 
-## Slide 38: Valor Diferencial del Arquitecto
+## Slide 40: Valor Diferencial del Arquitecto
 El valor diferencial del arquitecto estará en conectar tecnología, negocio y responsabilidad social. Mientras la IA podrá generar opciones, el arquitecto deberá formular las preguntas correctas, evaluar riesgos y asegurar que la arquitectura sea sostenible en el tiempo. No será solo un experto técnico, sino un líder de decisiones complejas.
 
-## Slide 39: Riesgos y Oportunidades
+## Slide 41: Riesgos y Oportunidades
 Las oportunidades incluyen herramientas más avanzadas, automatización de tareas repetitivas y más tiempo para lo estratégico. Los riesgos abarcan la dependencia excesiva de la IA sin validación, generación de deuda técnica a gran velocidad, sesgos algorítmicos y aumento del consumo energético.
 
 **Términos clave:**
 - **Sesgo algorítmico**: Error sistemático en un modelo de IA que produce resultados injustos o discriminatorios hacia ciertos grupos. El arquitecto debe diseñar sistemas que mitiguen sesgos en datos y modelos.
 
-## Slide 40: Conclusión
+## Slide 42: Conclusión
 En conclusión, el rol del arquitecto de software no desaparecerá. Se volverá más estratégico, interdisciplinario y crítico. La diferencia no estará solo en conocer nuevas tecnologías, sino en saber cuándo usarlas, cómo gobernarlas y qué consecuencias pueden generar.
 
-## Slide 41: Síntesis del Trabajo
+## Slide 43: Síntesis del Trabajo
 Llegamos a la conclusión general de nuestra investigación. Nuestro trabajo evidencia que el éxito de Spotify reside en una arquitectura cuidadosamente diseñada que equilibra escalabilidad, disponibilidad, seguridad y capacidad de innovación. El arquitecto moderno trasciende lo técnico para convertirse en puente estratégico. Y el futuro exigirá nuevas competencias sin eliminar la necesidad del criterio humano.
 
-## Slide 42: Referencias
+## Slide 44: Referencias
 Estas son las principales referencias consultadas para este trabajo. Se utilizaron fuentes académicas, técnicas y de la industria, incluyendo papers originales de ingenieros de Spotify, documentación oficial de tecnologías como Kafka y Cassandra, y estándares recientes de ISO y NIST. La lista completa de referencias en formato APA se encuentra en el documento de investigación.
 
 **Términos clave:**
 - **APA (American Psychological Association)**: Estilo de citación y formato académico estándar. Incluye citas autor-año en el texto y referencias completas al final. Requerido por el SOW del trabajo.
 
-## Slide 43: ¡Gracias!
+## Slide 45: ¡Gracias!
 Muchas gracias por su atención. Quedamos abiertos a preguntas y comentarios.
